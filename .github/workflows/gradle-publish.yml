@@ -3,7 +3,9 @@
 
 name: Gradle Package
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
@@ -23,6 +25,7 @@ jobs:
 
 
   heroku-deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
